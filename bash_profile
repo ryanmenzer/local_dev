@@ -1,3 +1,16 @@
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+source ~/.bashrc
+source ~/.profile
+alias yolo='rails db:drop db:create db:migrate db:fixtures:load'
+
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
+export EDITOR=atom
+export GIT_EDITOR=atom
+
+# https://github.com/jcgoble3/gitstuff/blob/master/gitprompt.sh
 # Adds the current branch to the bash prompt when the working directory is
 # part of a Git repository. Includes color-coding and indicators to quickly
 # indicate the status of working directory.
@@ -71,32 +84,6 @@ git_prompt() {
         echo -e "\x01$color\x02[$branch$state]\x01\033[00m\x02"  # last bit resets color
     fi
 }
-
-# Sample prompt declaration based off of the default Ubuntu 14.04.1 color
-# prompt. Tweak as you see fit, or just stick "$(git_prompt)" into your
-# favorite prompt.
-# export PS1='$debian_chroot\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$(git_prompt)\[\033[00m\]\$ '
-# export PS1='$(git_prompt)\[\033[00m\]\$ '
-
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-source ~/.bashrc
-source ~/.profile
-alias yolo='rails db:drop db:create db:migrate db:fixtures:load'
-
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-
-alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-
-export EDITOR=atom
-export GIT_EDITOR=atom
-
-# function parse_git_dirty {
-#   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
-# }
-# function parse_git_branch {
-#   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
-# }
 
 export PS1='\[\033[0m\]\W$(git_prompt)$ '
 
