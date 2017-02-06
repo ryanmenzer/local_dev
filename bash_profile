@@ -62,13 +62,13 @@ git_color() {
     local staged=$([[ $1 =~ \+ ]] && echo yes)
     local dirty=$([[ $1 =~ [!\?] ]] && echo yes)
     if [[ -n $staged ]] && [[ -n $dirty ]]; then
-        echo -e '\033[0;33m'  # bold yellow
+        echo -e '\033[0;33m'  # yellow
     elif [[ -n $staged ]]; then
-        echo -e '\033[0;32m'  # bold green
+        echo -e '\033[0;32m'  # green
     elif [[ -n $dirty ]]; then
-        echo -e '\033[0;31m'  # bold red
+        echo -e '\033[0;31m'  # red
     else
-        echo -e '\033[0;36m'  # bold cyan
+        echo -e '\033[0;36m'  # cyan
     fi
 }
 
