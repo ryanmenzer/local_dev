@@ -49,13 +49,13 @@ git_color() {
     local staged=$([[ $1 =~ \+ ]] && echo yes)
     local dirty=$([[ $1 =~ [!\?] ]] && echo yes)
     if [[ -n $staged ]] && [[ -n $dirty ]]; then
-        echo -e '\033[0;33m'  # yellow
+        echo -e '\033[0;33m'  # bold yellow
     elif [[ -n $staged ]]; then
-        echo -e '\033[0;32m'  # green
+        echo -e '\033[0;32m'  # bold green
     elif [[ -n $dirty ]]; then
-        echo -e '\033[0;31m'  # red
+        echo -e '\033[0;31m'  # bold red
     else
-        echo -e '\033[0;36m'  # cyan
+        echo -e '\033[0;36m'  # bold cyan
     fi
 }
 
@@ -76,7 +76,8 @@ git_prompt() {
 # prompt. Tweak as you see fit, or just stick "$(git_prompt)" into your
 # favorite prompt.
 # export PS1='$debian_chroot\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$(git_prompt)\[\033[00m\]\$ '
-export PS1='\[\033[0m\]\W$(git_prompt)$ '
+# export PS1='$(git_prompt)\[\033[00m\]\$ '
+
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 source ~/.bashrc
@@ -89,15 +90,15 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 
 export EDITOR=atom
 export GIT_EDITOR=atom
-# # old git prompt
+
 # function parse_git_dirty {
 #   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
 # }
 # function parse_git_branch {
 #   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 # }
-# export PS1='\[\033[0m\]\W$(parse_git_dirty)$ '
 
+export PS1='\[\033[0m\]\W$(git_prompt)$ '
 
 # git autocomplete
 # install:
