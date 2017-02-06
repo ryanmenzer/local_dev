@@ -49,13 +49,13 @@ git_color() {
     local staged=$([[ $1 =~ \+ ]] && echo yes)
     local dirty=$([[ $1 =~ [!\?] ]] && echo yes)
     if [[ -n $staged ]] && [[ -n $dirty ]]; then
-        echo -e '\033[1;33m'  # bold yellow
+        echo -e '\033[0;33m'  # yellow
     elif [[ -n $staged ]]; then
-        echo -e '\033[1;32m'  # bold green
+        echo -e '\033[0;32m'  # green
     elif [[ -n $dirty ]]; then
-        echo -e '\033[1;31m'  # bold red
+        echo -e '\033[0;31m'  # red
     else
-        echo -e '\033[1;37m'  # bold white
+        echo -e '\033[0;36m'  # cyan
     fi
 }
 
@@ -75,46 +75,46 @@ git_prompt() {
 # Sample prompt declaration based off of the default Ubuntu 14.04.1 color
 # prompt. Tweak as you see fit, or just stick "$(git_prompt)" into your
 # favorite prompt.
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$(git_prompt)\[\033[00m\]\$ '
+# export PS1='$debian_chroot\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$(git_prompt)\[\033[00m\]\$ '
+export PS1='\[\033[0m\]\W$(git_prompt)$ '
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+source ~/.bashrc
+source ~/.profile
+alias yolo='rails db:drop db:create db:migrate db:fixtures:load'
+
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
+export EDITOR=atom
+export GIT_EDITOR=atom
+# # old git prompt
+# function parse_git_dirty {
+#   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
+# }
+# function parse_git_branch {
+#   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+# }
+# export PS1='\[\033[0m\]\W$(parse_git_dirty)$ '
 
 
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-# source ~/.bashrc
-# source ~/.profile
-# alias yolo='rails db:drop db:create db:migrate db:fixtures:load'
-#
-# alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-#
-# alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-#
-# export EDITOR=atom
-# export GIT_EDITOR=atom
-#
-# # function parse_git_dirty {
-# #   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
-# # }
-# # function parse_git_branch {
-# #   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
-# # }
-#
-# # export PS1='\[\033[0m\]\W$(parse_git_branch)$ '
-#
-# # git autocomplete
-# # install:
-# # 1. curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
-# # 2. chmod -X ~/.git-completion.bash
-#
-# if [ -f ~/.git-completion.bash ]; then
-#     . ~/.git-completion.bash
-# fi
-#
-# #mongodb binary
-# export MONGO_PATH=/usr/local/mongodb
-# export PATH=$PATH:$MONGO_PATH/bin
-#
-# #loads Node nvm
-# [ -s "/Users/ryan/.nvm/nvm.sh" ] && . "/Users/ryan/.nvm/nvm.sh"
-#
-# # searches history of ls commands
-# bind '"^[[A":history-search-backward'
-# bind '"^[[B":history-search-forward'
+# git autocomplete
+# install:
+# 1. curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+# 2. chmod -X ~/.git-completion.bash
+
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
+#mongodb binary
+export MONGO_PATH=/usr/local/mongodb
+export PATH=$PATH:$MONGO_PATH/bin
+
+#loads Node nvm
+[ -s "/Users/ryan/.nvm/nvm.sh" ] && . "/Users/ryan/.nvm/nvm.sh"
+
+# searches history of ls commands
+bind '"^[[A":history-search-backward'
+bind '"^[[B":history-search-forward'
