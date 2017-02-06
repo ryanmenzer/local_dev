@@ -1,5 +1,6 @@
 Apps and Managers
 
+git - $ git config --global user.name "ryanmenzer"
 Atom
 Xcode
 Sequel Pro

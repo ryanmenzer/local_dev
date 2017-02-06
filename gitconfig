@@ -1,0 +1,12 @@
+[user]
+	name = ryanmenzer
+	email = ryan.menzer@cru.org
+[alias]
+	st = status
+	br = branch
+	cm = commit -m
+	co = checkout
+	po = push origin
+	pom = push origin master
+[core]
+	editor = atom -w
