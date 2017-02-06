@@ -6,6 +6,3 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 export NVM_DIR="/Users/ryan/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-alias cm='commit -m'
-alias st='status'

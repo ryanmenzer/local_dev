@@ -10,6 +10,9 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 export EDITOR=atom
 export GIT_EDITOR=atom
 
+alias cm='commit -m'
+alias st='status'
+
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
 }
