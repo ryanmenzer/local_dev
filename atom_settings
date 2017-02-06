@@ -1,0 +1,45 @@
+Atom Packages
+
+angular2-snippets
+angular2-snippets atom
+atom-beautify
+atom-bootstrap4
+atom-ternjs
+atom-typescript (dep as of 1/2017)
+auto-detect-indentation
+autoclose-html
+color-picker
+color-tabs
+emmet
+file-icons
+hightlight-selected
+linter
+minimap
+minimap-highlight-selected
+pane-split-moves-tab
+pigments
+seti-icons
+platformio-ide-terminal
+
+
+Atom Themes (Syntax Theme)
+
+monokai
+monokai-shade (dep as of 1/2017)
+
+UI Theme: One Dark
+
+Stylesheet
+
+.platformio-ide-terminal .xterm {
+  background-color: ;
+  color: cyan;
+
+  ::selection {
+    background-color: rgb(203, 203, 203);
+  }
+
+  .terminal-cursor {
+    background-color: cyan;
+  }
+}
