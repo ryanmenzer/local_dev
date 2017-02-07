@@ -10,6 +10,12 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 export EDITOR=atom
 export GIT_EDITOR=atom
 
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export NVM_DIR="/Users/ryanmenzer/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # https://github.com/jcgoble3/gitstuff/blob/master/gitprompt.sh
 # Adds the current branch to the bash prompt when the working directory is
 # part of a Git repository. Includes color-coding and indicators to quickly
